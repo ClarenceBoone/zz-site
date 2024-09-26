@@ -427,9 +427,12 @@
             ];
             let currentSlide = 0;
 
-            // Set initial background images
+            // Set initial background images and make first slide active
             slides.forEach((slide, index) => {
                 slide.style.backgroundImage = `url(${images[index]})`;
+                if (index === 0) {
+                    slide.classList.add('active');
+                }
             });
 
             function showSlide(index) {
@@ -442,9 +445,6 @@
                 let next = (currentSlide + 1) % slides.length;
                 showSlide(next);
             }
-
-            // Show the first slide
-            showSlide(0);
 
             // Change slide every 5 seconds
             setInterval(nextSlide, 5000);
